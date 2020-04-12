@@ -13,18 +13,24 @@
         <script>
             // Our Javascript will go here.
             var scene = new THREE.Scene();
-            var camera = new THREE.PerspectiveCamera(75, 
-            window.innerWidth/window.innerHeight, 0.1, 1000);
+            var camera = new THREE.PerspectiveCamera(90, window.innerWidth/window.innerHeight, 0.1, 1000);
 
             var renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight, false);
             document.body.appendChild(renderer.domElement);
 
             var geometry = new THREE.BoxGeometry();
             var material = new THREE.MeshBasicMaterial( {color: 0x4c9775} );
             var cube = new THREE.Mesh(geometry, material);
+            var material2 = new THREE.MeshBasicMaterial( {color: 0xff0923});
+            var cube2 = new THREE.Mesh(geometry, material2);
+            var material3 = new THREE.MeshBasicMaterial( {color: 0x00f7dc});
+            var theta = Math.PI / 360;
+            var radius = 0.01;
             scene.add(cube);
-            camera.position.z = 5; //this moves the camera towards the viewer
+            scene.add(cube2);
+            scene.background = {color:0xffffff};
+            camera.position.z = 3; //this moves the camera towards the viewer
 
             function animate()
             {
@@ -32,8 +38,17 @@
                 renderer.render(scene, camera);
 
                 // Rotate first cube
-                geometry.rotateX(0.01);
-                geometry.rotateY(0.01);
+                cube.translateX(Math.cos(theta) * radius);
+                cube.translateY(Math.sin(theta) * radius);
+                cube.rotateX(0.01);
+                cube.rotateY(0.01);
+
+                // Rotate the second cube
+                cube2.translateX(Math.cos(theta) * radius);
+                cube2.translateY(Math.sin(theta) * radius);
+                cube2.rotateX(-0.01);
+                cube2.rotateY(-0.01);
+                theta += Math.PI / 360;
             }
             animate();
         </script>
