@@ -11,7 +11,7 @@ scene.add(light);
 
 // Load first 3D model
 var loader = new THREE.GLTFLoader();
-loader.load('little_lamp3.glb', function (gltf) {
+loader.load('assets/little_lamp3.glb', function (gltf) {
     scene.add(gltf.scene);
     gltf.scene.position.set(-50, 0, 0);
     gltf.scene.scale.set(50, 50, 50);
@@ -25,7 +25,7 @@ loader.load('little_lamp3.glb', function (gltf) {
 });
 
 // Load 2nd 3D model
-loader.load('deskLamp1.glb', function (gltf) {
+loader.load('assets/deskLamp1.glb', function (gltf) {
     scene.add(gltf.scene);
     gltf.scene.position.set(-80, 0, -30)
     gltf.scene.scale.set(0.5, 0.5, 0.5);
@@ -36,7 +36,7 @@ loader.load('deskLamp1.glb', function (gltf) {
 });
 
 // Load 3rd 3D model
-loader.load('cup.glb', function (gltf) {
+loader.load('assets/cup.glb', function (gltf) {
     scene.add(gltf.scene);
     gltf.scene.position.set(-25, 0, 0);
 }, function (xhr) {
