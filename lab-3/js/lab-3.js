@@ -1,3 +1,77 @@
+// Ensure that shaders have been loaded
+THREE.Cache.enabled = true;
+var count = 0;
+var loader = new THREE.FileLoader();
+var fshader, vshader;
+
+loader.load('shaders/vertex-shader.vert',
+    // onLoad callback
+    function (data)
+    {
+        console.log(data); // output the text to the console
+        vshader = data;
+        count += 1;
+        addCoolCube(); // we will write this method
+    },
+    // onProgress callback
+    function (xhr)
+    {
+        console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+    },
+    // onError callback
+    function (err)
+    {
+        console.error('An error happened');
+    }
+);
+
+loader.load('shaders/fragment-shader.frag',
+    // onLoad callback
+    function (data)
+    {
+        console.log(data); // output the text to the console
+        fshader = data;
+        count += 1;
+        addCoolCube(); // we will write this method
+    },
+    // onProgress callback
+    function (xhr)
+    {
+        console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+    },
+    // onError callback
+    function (err)
+    {
+        console.error('An error happened');
+    }
+);
+
+// Add cool cube method
+var geometry1, material1, mesh1;
+
+function addCoolCube()
+{
+    if(count == 2)
+    {
+        let uniforms = {
+            colorB: {type: 'vec3', value: new THREE.Color(0xACB6E5)},
+            colorA: {type: 'vec3', value: new THREE.Color(0x74ebd5)}
+        };
+    
+        geometry1 = new THREE.BoxGeometry(1, 1, 1);
+        material1 =  new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            fragmentShader: fshader,
+            vertexShader: vshader,
+            precision: "mediump"});
+
+        mesh1 = new THREE.Mesh(geometry1, material1);
+        mesh1.position.x = 3;
+        scene.add(mesh1);
+    }    
+}
+
+
 // setup the scene
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -42,17 +116,25 @@ scene.add(light);
 
 // Function taken from three.js_shadowmap_pointlight example
 // https://github.com/mrdoob/three.js/blob/master/examples/webgl_shadowmap_pointlight.html
-function onWindowResize() {
+function onWindowResize()
+{
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 window.addEventListener( 'resize', onWindowResize, false );
 
-function animate() {
+function animate()
+{
     requestAnimationFrame(animate);
     geometry.rotateX(0.01);
     geometry.rotateY(0.01);
     renderer.render(scene, camera);
+
+    // Animate cool cube
+    if(geometry1) {
+        geometry1.rotateX(0.01);
+        geometry1.rotateY(0.01);
+    }
 }
 animate();
