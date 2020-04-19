@@ -136,7 +136,7 @@ cube2.position.set(-3, 0, 0);
 scene.add(cube2);
 
 // add the light
-var light = new THREE.PointLight(0xffffff, 2, 1000);
+var light = new THREE.PointLight(0xffffff, 1, 1000);
 light.position.set(10, 10, 10);
 scene.add(light);
 
