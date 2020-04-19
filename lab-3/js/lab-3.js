@@ -2,7 +2,7 @@
 THREE.Cache.enabled = true;
 var count = 0;
 var loader = new THREE.FileLoader();
-var fshader, vshader;
+var fshader, fshader2, vshader;
 
 loader.load('shaders/vertex-shader.vert',
     // onLoad callback
@@ -11,7 +11,7 @@ loader.load('shaders/vertex-shader.vert',
         console.log(data); // output the text to the console
         vshader = data;
         count += 1;
-        addCoolCube(); // we will write this method
+        // addCoolCube(); // we will write this method
     },
     // onProgress callback
     function (xhr)
@@ -32,7 +32,28 @@ loader.load('shaders/fragment-shader.frag',
         console.log(data); // output the text to the console
         fshader = data;
         count += 1;
-        addCoolCube(); // we will write this method
+        addCoolCube(fshader); // we will write this method
+    },
+    // onProgress callback
+    function (xhr)
+    {
+        console.log((xhr.loaded/xhr.total * 100)+ '% loaded');
+    },
+    // onError callback
+    function (err)
+    {
+        console.error('An error happened');
+    }
+);
+
+loader.load('shaders/fragment-shader-2.frag',
+    // onLoad callback
+    function (data)
+    {
+        console.log(data); // output the text to the console
+        fshader2 = data;
+        count += 1;
+        addCoolCube(fshader2); // we will write this method
     },
     // onProgress callback
     function (xhr)
@@ -47,27 +68,31 @@ loader.load('shaders/fragment-shader.frag',
 );
 
 // Add cool cube method
-var geometry1, material1, mesh1;
+var coolGeometries = [];
+var coolMaterials = [];
+var coolMeshes = [];
 
-function addCoolCube()
+function addCoolCube(fragShader)
 {
-    if(count == 2)
+    if(count >= 2)
     {
         let uniforms = {
             colorB: {type: 'vec3', value: new THREE.Color(0xACB6E5)},
             colorA: {type: 'vec3', value: new THREE.Color(0x74ebd5)}
         };
     
-        geometry1 = new THREE.BoxGeometry(1, 1, 1);
-        material1 =  new THREE.ShaderMaterial({
+        coolGeometries.push(new THREE.BoxGeometry(1, 1, 1));
+        coolMaterials.push(new THREE.ShaderMaterial({
             uniforms: uniforms,
-            fragmentShader: fshader,
+            fragmentShader: fragShader,
             vertexShader: vshader,
-            precision: "mediump"});
+            precision: "mediump"}));
 
-        mesh1 = new THREE.Mesh(geometry1, material1);
-        mesh1.position.x = 3;
-        scene.add(mesh1);
+        coolMeshes.push(new THREE.Mesh(coolGeometries[coolGeometries.length - 1], coolMaterials[coolMaterials.length - 1]));
+        // coolMeshes.position.x = 3;
+        coolMeshes[coolMeshes.length - 1].position.x = coolMeshes.length * 3;
+        for(var i = 0; i < coolMeshes.length; i++)
+            scene.add(coolMeshes[i]);
     }    
 }
 
@@ -78,6 +103,7 @@ var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeigh
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+camera.position.x = 1.5;
 camera.position.z = 5;
 
 // setup the 1st cube
@@ -131,10 +157,13 @@ function animate()
     geometry.rotateY(0.01);
     renderer.render(scene, camera);
 
-    // Animate cool cube
-    if(geometry1) {
-        geometry1.rotateX(0.01);
-        geometry1.rotateY(0.01);
+    // Animate cool cubes
+    for(var i = 0; i < coolGeometries.length; i++)
+    {
+        if(coolGeometries[i]) {
+            coolGeometries[i].rotateX(0.01);
+            coolGeometries[i].rotateY(0.01);
+        }
     }
 }
 animate();
