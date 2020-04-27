@@ -1,4 +1,8 @@
 # CMPM163Labs  
+## Lab 4  
+**24a)** Given a u coordinate in [0.1], I can use the formula, **f(u) = floor(8 * u)**, to get the corresponding x value of the pixel to sample from in the 8x8 texture.  
+**24b)** Given a v coordinate in [0.1], I can use the formula, **f(v) = floor(8 * v)**, to get the corresponding y value of the pixel to sample from in the 8x8 texture.  
+**24c)** If f'(u,v) = f'(f(u), f(v)), then f'(0.375,0.25) will give me (3,2). (3,2) in the 8x8 texture will give me the **white color**. 
 ## Lab 3  
 [Video of 4 Cubes](https://drive.google.com/open?id=1glBU7U0A-sg660rtpf8CkN4yMhhIApfE)  
 The first cube on the left was made using 6 wireframe + flatshaded MeshToonMaterials, each with a different color.  
