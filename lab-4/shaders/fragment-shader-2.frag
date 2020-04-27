@@ -1,8 +1,9 @@
-varying vec3 vUv;
-// uniform vec3 color;
-// uniform vec3 shade;
+uniform sampler2D texture1;
+varying vec2 vUv;
 
 void main() {
-    // gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0); //rgba, return blue
-    gl_FragColor = vec4(vUv.x, vUv.y, vUv.z, 1.0);
+    vec2 tiled = 9.0 * vUv;
+    tiled = fract(tiled); // Use the fract() function to get the tiled grid effect
+    // sample from the texture based on the uv coordinates
+    gl_FragColor = texture2D(texture1, tiled);
 }
