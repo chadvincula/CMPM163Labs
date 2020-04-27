@@ -50,14 +50,13 @@ function addTextureShaderCube()
 {
     if(count == 2)
     {
-        // let uniforms = {
-        //     colorB: {type: 'vec3', value: new THREE.Color(0xACB6E5)},
-        //     colorA: {type: 'vec3', value: new THREE.Color(0x74ebd5)}
-        // };
+        let uniforms = {
+            texture1: {type: "t", value: new THREE.TextureLoader().load("textures/galaxy-paint.jpg")}
+        };
     
         geometry1 = new THREE.BoxGeometry(1, 1, 1);
         material1 =  new THREE.ShaderMaterial({
-            // uniforms: uniforms,
+            uniforms: uniforms,
             fragmentShader: fshader,
             vertexShader: vshader});
             // precision: "mediump"});
