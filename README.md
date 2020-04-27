@@ -5,7 +5,7 @@
 - The second cube on the left also uses Three.js functionality for applying textures to a mesh. The different is that it also applies a normal map onto the mesh.  
 - The middle cube is the same thing as the second cube, but with a different texture and normal map.
 - The cube to the right of the middle one uses shaders to apply the texture onto the mesh.  
-- And the last cube on the right uses shaders, and more specifically, **the GLSL fract() function** to apply a texture in a grid-like pattern onto the mesh.  
+- And the last cube on the right uses shaders, and more specifically, **the GLSL fract() function** to apply a texture in a grid-like pattern onto the mesh. Passing the uv vector multiplied by a scalar into the fract() function gives the grid effect. Apparently it has to do with returning the modulo of the vector? I can't say I completely understand how the fract() function produces the grid effect, but it works and I know how to modify the grid's dimensions.  
 
 **24a)** Given a u coordinate in [0.1], I can use the formula, **f(u) = floor(8 * u)**, to get the corresponding x value of the pixel to sample from in the 8x8 texture.  
 **24b)** Given a v coordinate in [0.1], I can use the formula, **f(v) = floor(8 * v)**, to get the corresponding y value of the pixel to sample from in the 8x8 texture.  
