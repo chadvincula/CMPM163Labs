@@ -1,4 +1,9 @@
 # CMPM163Labs  
+## Lab 6  
+- Point Light: A type of light in Unity that acts as a sort of light bulb. It projects light equally in all directions in 3D space. Its range and intensity parameters can affect how far the light travels.  
+- Spotlight: A type of light in Unity that acts as a sort of flashlight. It projects light in a cone shape. Also, the spot light's position and rotation are important to consider went thinking about how to project light onto objects using this type of light component.  
+- Directional Light: A type of light that acts the Sun and affects all game objects in a scene. The main difference between directional lights and point lights is that position of the directional light doesn't matter, but its rotation does instead.  
+- Area Light: Only relevant for baked lightings. This type of light projects light in all directions, but only onto one side of a rectangular plane  
 ## Lab 4  
 [Video of 5 Fairly Static Cubes](https://drive.google.com/open?id=1Cab6s-uDRfzhxwNkYRXNpPm9bTj6QRyv)  
 - The first cube on the left uses Three.js functionality for applying textures to a mesh.  
