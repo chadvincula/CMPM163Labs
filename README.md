@@ -11,8 +11,8 @@ For Lab 6, I decided to work on Part 1
 **Materials & The Custom Shader**  
 *Target Material:* Contruction Paper  
 ![Contruction Paper Example](https://riverside3d.com/files/riverside_content/color_swatches/Riverside_Holiday-Red.jpg)  
-![Object in Unity](https://drive.google.com/file/d/1pSZrAQ2T275FIFo5uAmAuN6hBgg7GGan/view?usp=sharing)  
-![Unity Texture](https://drive.google.com/file/d/1VRnkxFI5Pfz_81XPipI6HBQ8uX4hj9az/view?usp=sharing)  
+[Object in Unity](https://drive.google.com/file/d/1pSZrAQ2T275FIFo5uAmAuN6hBgg7GGan/view?usp=sharing)  
+[Unity Texture](https://drive.google.com/file/d/1VRnkxFI5Pfz_81XPipI6HBQ8uX4hj9az/view?usp=sharing)  
 Stock image used to create Construction Paper material: [Sand Paper Image](https://a.rgbimg.com/users/c/cr/crisderaud/600/mftZ3b6.jpg)  
 I initially wanted to make sand paper so I simply took an image of sand paper online, turned it into a texture and normal map, and applied it to a cube. I was playing around with the material's smoothness value, but the material was looking more like a leopard print pattern instead. I later decided to play around with the material's normal map value, and once I reduced the value from 1 to 0.1, the material seemed to look much softer and it displayed a more construction paper-like aesthetic rather than sand paper. After that I just decided to roll with it, then out came my construction paper material. To change the color from tan to red, I simply adjjusted the material's albedo color to give it a redish tint that's similar to the image of construction paper that I found online.  
   
