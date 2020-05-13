@@ -1,5 +1,7 @@
 # CMPM163Labs  
 ## Lab 6  
+For Lab 6, I decided to work on Part 1  
+  
 **Lighting Overview & Lights**  
 - Point Light: A type of light in Unity that acts as a sort of light bulb. It projects light equally in all directions in 3D space. Its range and intensity parameters can affect how far the light travels.  
 - Spotlight: A type of light in Unity that acts as a sort of flashlight. It projects light in a cone shape. Also, the spot light's position and rotation are important to consider went thinking about how to project light onto objects using this type of light component.  
@@ -9,10 +11,10 @@
 **Materials & The Custom Shader**  
 *Target Material:* Contruction Paper  
 ![Contruction Paper Example](https://riverside3d.com/files/riverside_content/color_swatches/Riverside_Holiday-Red.jpg)  
-Stock image used for Construction Paper material: ![Sand Paper Image](https://a.rgbimg.com/users/c/cr/crisderaud/600/mftZ3b6.jpg)  
+![Object in Unity](https://drive.google.com/file/d/1pSZrAQ2T275FIFo5uAmAuN6hBgg7GGan/view?usp=sharing)  
+![Unity Texture](https://drive.google.com/file/d/1VRnkxFI5Pfz_81XPipI6HBQ8uX4hj9az/view?usp=sharing)  
+Stock image used to create Construction Paper material: [Sand Paper Image](https://a.rgbimg.com/users/c/cr/crisderaud/600/mftZ3b6.jpg)  
 I initially wanted to make sand paper so I simply took an image of sand paper online, turned it into a texture and normal map, and applied it to a cube. I was playing around with the material's smoothness value, but the material was looking more like a leopard print pattern instead. I later decided to play around with the material's normal map value, and once I reduced the value from 1 to 0.1, the material seemed to look much softer and it displayed a more construction paper-like aesthetic rather than sand paper. After that I just decided to roll with it, then out came my construction paper material. To change the color from tan to red, I simply adjjusted the material's albedo color to give it a redish tint that's similar to the image of construction paper that I found online.  
-[Object in Unity](https://drive.google.com/file/d/1pSZrAQ2T275FIFo5uAmAuN6hBgg7GGan/view?usp=sharing)  
-[Unity Texture](https://drive.google.com/file/d/1VRnkxFI5Pfz_81XPipI6HBQ8uX4hj9az/view?usp=sharing)  
   
   **Textures**  
   The first texture on the top right corner of the scene is an advertisement for paper that I made during my junior year of high school. It says, "Paper\n You know you want it" and is implemented as a Canvas UI element and scales depending on the screen size while maintaining the same aspect ratio. The second texture can be found on the right of the scene. It is a piece of art I made to look like [Vitruvius from *The Lego Movie*](https://www.thoughtco.com/thmb/aHuXREOE3Ur2sAw-wKMSoHGuXAY=/1920x1080/smart/filters:no_upscale()/LEGO-vitruvius-56a02e2d3df78cafdaa06d8d.jpg).  
