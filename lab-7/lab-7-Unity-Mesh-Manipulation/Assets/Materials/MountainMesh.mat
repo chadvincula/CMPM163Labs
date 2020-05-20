@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VertexDisplacementMaterial
+  m_Name: MountainMesh
   m_Shader: {fileID: -6465566751694194690, guid: e5c3258e75f1df84fb5aaf494b1c6330,
     type: 3}
   m_ShaderKeywords: 
