@@ -1,4 +1,33 @@
 # CMPM163Labs  
+## Lab 7  
+[Video of lab 7 scene](https://drive.google.com/file/d/1gcrzAg0VU-hmbUJKh5YWMnv3hzGlLv75/view?usp=sharing)  
+This scene mainly consists of objects that use my mountain shader or my "wave" shader.  
+The mountian shader has different components that come together to create a mountain-like object.  
+For the vertex displacement:
+1) Voronoi noise is used to create a sort of height map for mountain tops.  
+2) Then I multiply a gradient with polar UV coordinates in order to get circular height map that will specify the general height of mountains within a certain radius.  
+3) Next, I multiply the two height maps together for to get a final height map  
+4) I add the product to the object's postition in object-space and map it to the object's new position.  
+
+
+For mountain color:  
+1) I take in a color as a parameter and multiply it with the original circular gradient so that the mountains will only have color when they have a high enough altitude.  
+2) The resulting color map gets multiplied by a texture (and in this case I used the sample hammer texture provided by Unity), which allowed me to get geometric lines across the mountains.  
+Here is a picture of the [shader graph](https://drive.google.com/file/d/1LdXFAMm7HboEkVp3iK8cxfwXiTS8kfsV/view?usp=sharing)
+
+
+The wave shader was highly inspired by the wave tutorial provided by the lab instructions. I followed the example by:  
+1) Adding the object's world x position by Time  
+2) Putting it through a cosine function  
+3) Multiplying the result by some number  
+4) Adding that result to the cosine of the object's world position  
+5) Then adding the object's raw world position  
+
+This allowed me to get a growing and shrinking motion that's similar to shallow water on a beach rather than the wave-like motion from the tutorial video.  
+For more customization on the shader, I pass in a texture and a color to the shader for different...textures.  
+[Picture of the shader graph](https://drive.google.com/file/d/17FWkKv1xncgRgb7V-Vsk3dwoFIfRyCx0/view?usp=sharing)  
+The objects that use this shader are the ground/sand, giant puddles of blue water, and the giant wave of sludge in the background. Once again, I use example textures provided by Unity, and the ground/sand uses the plywood texture then the sludge/puddles of water use the ground texture.
+
 ## Lab 6  
 For Lab 6, I decided to work on Part 1  
   
