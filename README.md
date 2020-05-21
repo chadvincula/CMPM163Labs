@@ -26,7 +26,9 @@ The wave shader was highly inspired by the wave tutorial provided by the lab ins
 This allowed me to get a growing and shrinking motion that's similar to shallow water on a beach rather than the wave-like motion from the tutorial video.  
 For more customization on the shader, I pass in a texture and a color to the shader for different...textures.  
 [Picture of the shader graph](https://drive.google.com/file/d/17FWkKv1xncgRgb7V-Vsk3dwoFIfRyCx0/view?usp=sharing)  
-The objects that use this shader are the ground/sand, giant puddles of blue water, and the giant wave of sludge in the background. Once again, I use example textures provided by Unity, and the ground/sand uses the plywood texture then the sludge/puddles of water use the ground texture.
+The objects that use this shader are the ground/sand, giant puddles of blue water, and the giant wave of sludge in the background. Once again, I use example textures provided by Unity, and the ground/sand uses the plywood texture then the sludge/puddles of water use the ground texture.  
+  
+Also, I did not get to check in with my partner as we have never contacted each other and I did not finish the lab until last-minute.
 
 ## Lab 6  
 For Lab 6, I decided to work on Part 1  
