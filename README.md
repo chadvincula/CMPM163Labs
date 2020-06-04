@@ -1,4 +1,7 @@
 # CMPM163Labs  
+## Lab 9  
+Screenshot of Tutorial L-System:  
+![Screenshot of Tutorial L-System](/lab-9/img/Vanilla-Tutorial.png)
 ## Lab 7  
 [Video of lab 7 scene](https://drive.google.com/file/d/1gcrzAg0VU-hmbUJKh5YWMnv3hzGlLv75/view?usp=sharing)  
 This scene mainly consists of objects that use my mountain shader or my "wave" shader.  
