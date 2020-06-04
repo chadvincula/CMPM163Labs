@@ -7,19 +7,21 @@ using UnityEngine;
 
 public class LSystemGenerator : MonoBehaviour
 {
+    [SerializeField]
+    private int iterations;
     private string currentString;
-    private string axiom = "A";
+    private string axiom = "F";
+    private float length = 20f;
+    private float angle = 25f;
+    private bool isGenerating = false;
     private Dictionary<char, string> rules = new Dictionary<char, string>();
+    private Stack<TransformInfo> transformStack = new Stack<TransformInfo>();
     // Start is called before the first frame update
     void Start()
     {
         currentString = axiom;
-        rules.Add('A', "AB");
-        rules.Add('B', "A");
-
-        Generate();
-        Generate();
-        Generate();
+        rules.Add('F', "FF+[+F-F-F]-[-F+F+F]");
+        StartCoroutine(GenerateLSystem(iterations));
     }
 
     // Update is called once per frame
@@ -28,17 +30,91 @@ public class LSystemGenerator : MonoBehaviour
         
     }
 
-    private void Generate()
+    IEnumerator GenerateLSystem(int iterations)
+    {
+        int count = 0;
+
+        while(count < iterations)
+        {
+            if(!isGenerating)
+            {
+                isGenerating = true;
+                Debug.Log("Generation: " + count);
+                StartCoroutine(Generate());
+                count++;
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+    }
+
+    IEnumerator Generate()
+    {
+        length /= 2;
+        char[] currentStringAsChars = currentString.ToCharArray();
+        ModifyAxiom(currentStringAsChars);
+        StartCoroutine(ApplyRules(currentStringAsChars));
+        yield return null;
+    }
+
+    private void ModifyAxiom(char[] axiomAsChar)
     {
         string modifiedString = "";
-
-        char[] currentStringAsChars = currentString.ToCharArray();
-        for(int i = 0; i < currentStringAsChars.Length; i++)
+        // Modifying the axiom
+        for(int i = 0; i < axiomAsChar.Length; i++)
         {
-            modifiedString += rules[currentStringAsChars[i]];
+            if(rules.ContainsKey(axiomAsChar[i]))
+            {
+                modifiedString += rules[axiomAsChar[i]];
+            }
+            else
+            {
+                modifiedString += axiomAsChar[i].ToString();
+            }
         }
 
         currentString = modifiedString;
         Debug.Log(currentString);
+    }
+
+    IEnumerator ApplyRules(char[] axiomAsChar)
+    {
+        // Specify the rules for the modified string
+        for(int i = 0; i < axiomAsChar.Length; i++)
+        {
+            if(axiomAsChar[i] == 'F')
+            {
+                Vector3 initialPosition = transform.position;
+                transform.Translate(Vector3.up * length);
+                Debug.DrawLine(initialPosition, transform.position, Color.white, 10000f, false);
+                yield return null;
+            }
+            else if(axiomAsChar[i] == '+')
+            {
+                transform.Rotate(Vector3.right * angle);
+            }
+            else if(axiomAsChar[i] == '-')
+            {
+                transform.Rotate(Vector3.right * -angle);
+            }
+            else if(axiomAsChar[i] == '[')
+            {
+                TransformInfo ti = new TransformInfo();
+                ti.position = transform.position;
+                ti.rotation = transform.rotation;
+
+                transformStack.Push(ti);
+            }
+            else if(axiomAsChar[i] == ']')
+            {
+                TransformInfo ti = transformStack.Pop();
+                transform.position = ti.position;
+                transform.rotation = ti.rotation;
+            }
+        }
+        isGenerating = false;
+        Debug.Log("Finished this generation");
     }
 }
